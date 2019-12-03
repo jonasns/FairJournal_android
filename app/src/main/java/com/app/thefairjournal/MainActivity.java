@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     WebView myWebView;
-    ImageView  home, camera,terif,event,contact;
+    ImageView  home,camera,terif,event,contact;
     ImageView logo;
     SwipeRefreshLayout pullToRefresh;
     private static final String TAG = "MainActivity";
@@ -61,15 +61,11 @@ public class MainActivity extends AppCompatActivity {
                 .unsubscribeWhenNotificationsAreDisabled(true)
                 .init();
 
-
-
         camera = (ImageView) findViewById(R.id.camera);
         home = (ImageView) findViewById(R.id.home);
         terif = (ImageView) findViewById(R.id.terif);
         event = (ImageView) findViewById(R.id.event);
         contact = (ImageView) findViewById(R.id.contact);
-
-
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,27 +175,6 @@ public class MainActivity extends AppCompatActivity {
                         view.reload();
                         return false;
                     }
-                } else if (url != null && url.startsWith("whatsapp://")) {
-                    view.getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-                    return true;
-
-                } else if (url != null && url.startsWith("https://twitter.com/")) {
-                    view.getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-                    return true;
-
-                } else if (url != null && url.startsWith("https://plus.google.com/")) {
-                    view.getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-                    return true;
-
-                } else if (url != null && url.startsWith("https://www.facebook.com/")) {
-                    view.getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-                    return true;
-
-                } else if (url.startsWith("sms:")) {
-                    Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse(url));
-                    startActivity(intent);
-                    return true;
-
 
                 } else {
                     view.loadUrl(url);
