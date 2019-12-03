@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/colorPrimary"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Error loading data :(
+\nPlease check your internet connection"
+        android:layout_centerInParent="true"
+        android:textColor="#FFF"
+        android:textSize="25sp"
+        android:layout_margin="20dp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+
+    <Button
+        android:id="@+id/refresh"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:background="#333333"
+        android:text="Refresh "
+        android:textColor="#FFF"
+        android:textSize="18sp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"/>
+
+</RelativeLayout>
