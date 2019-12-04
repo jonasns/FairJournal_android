@@ -35,21 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     WebView myWebView;
-    ImageView  home,camera,terif,event,contact;
-    ImageView logo;
+    ImageView  home;
     SwipeRefreshLayout pullToRefresh;
-    private static final String TAG = "MainActivity";
-    private View splashImgV;
-    private static ValueCallback<Uri[]> mFilePathCallback;
-    private ValueCallback<Uri> mUploadFile;
-    private ValueCallback<String[]> mFilePathCallbackStr;
-    private ProgressDialog progressBar;
-    public static final String PREFS_NAME = "MyPrefsFile";
-    RelativeLayout splash;
-    ProgressDialog dialog;
-    private String currentUrl = "http://www.example.com";
-    private static final int MAKE_CALL_PERMISSION_REQUEST_CODE = 1;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 //        final ProgressDialog pd = ProgressDialog.show(this, "", "Loading...",true);
-        final Activity activity = MainActivity.this;
         myWebView.setWebViewClient(new WebViewClient() {
             @Override
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
