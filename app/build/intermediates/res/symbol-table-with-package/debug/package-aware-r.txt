@@ -996,6 +996,8 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string about
+string about_us
 string app_name
 string common_google_play_services_enable_button
 string common_google_play_services_enable_text
@@ -1016,6 +1018,7 @@ string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
 string fcm_fallback_notification_channel_label
+string full_name
 string s1
 string s2
 string s3

@@ -61,11 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 .unsubscribeWhenNotificationsAreDisabled(true)
                 .init();
 
-        camera = (ImageView) findViewById(R.id.camera);
-        home = (ImageView) findViewById(R.id.home);
-        terif = (ImageView) findViewById(R.id.terif);
-        event = (ImageView) findViewById(R.id.event);
-        contact = (ImageView) findViewById(R.id.contact);
+        home = findViewById(R.id.home);
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        myWebView = (WebView) findViewById(R.id.webView);
+        myWebView = findViewById(R.id.webView);
         pullToRefresh = findViewById(R.id.pullToRefresh);
 
         pullToRefresh.setColorSchemeColors(Color.BLACK);
@@ -100,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
         myWebView.getSettings().setDomStorageEnabled(true);
         myWebView.getSettings().setLoadWithOverviewMode(true);
         myWebView.getSettings().setUseWideViewPort(true);
-        myWebView.getSettings().setPluginState(WebSettings.PluginState.ON);
         myWebView.setWebChromeClient(new WebChromeClient());
         myWebView.getSettings().setGeolocationEnabled(true);
         WebSettings webSettingss = myWebView.getSettings();
@@ -147,42 +142,6 @@ public class MainActivity extends AppCompatActivity {
                 pullToRefresh.setRefreshing(false);
             }
 
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
-                if (url.startsWith("tel:")) {
-                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(url));
-                    startActivity(intent);
-                    return true;
-                } else if (url.startsWith("mailto:")) {
-                    if (activity != null) {
-                        MailTo mt = MailTo.parse(url);
-
-                        Intent intent = new Intent(Intent.ACTION_SENDTO); // it's not ACTION_SEND
-                        intent.setType("text/plain");
-                        intent.putExtra(Intent.EXTRA_SUBJECT, mt.getSubject());
-                        intent.putExtra(Intent.EXTRA_TEXT, mt.getBody());
-                        intent.setData(Uri.parse("mailto:" + mt.getTo()));
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // this will make such that when user returns to your app, your app is displayed, instead of the email app.
-                        try {
-
-                            activity.startActivity(intent);
-                        } catch (android.content.ActivityNotFoundException e) {
-                            // TODO Auto-generated catch block
-                            e.printStackTrace();
-                            Log.d("Email error:", e.toString());
-                        }
-                        view.reload();
-                        return false;
-                    }
-
-                } else {
-                    view.loadUrl(url);
-                }
-                return false;
-            }
-
-
         });
 
 
@@ -203,70 +162,7 @@ public class MainActivity extends AppCompatActivity {
                 return super.onConsoleMessage(consoleMessage);
             }
 
-            @Override
-            public void onConsoleMessage(String message, int lineNumber, String sourceID) {
-                super.onConsoleMessage(message, lineNumber, sourceID);
-            }
 
-            public void openFileChooser(ValueCallback<Uri> uploadMsg) {
-                //   Log.d(TAG, "");
-                if (mUploadFile != null) {
-                    mUploadFile.onReceiveValue(null);
-                }
-                mUploadFile = uploadMsg;
-                showFileChooserPicker();
-            }
-
-
-            public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
-                // Log.d(TAG, "");
-                if (mUploadFile != null) {
-                    mUploadFile.onReceiveValue(null);
-                }
-                mUploadFile = uploadMsg;
-                showFileChooserPicker();
-            }
-
-
-            public void openFileChooser(ValueCallback<Uri> uploadFile, String acceptType, String capture) {
-                //Log.d(TAG, "");
-                if (mUploadFile != null) {
-                    mUploadFile.onReceiveValue(null);
-                }
-                mUploadFile = uploadFile;
-                showFileChooserPicker();
-            }
-
-
-            public void showFileChooser(ValueCallback<String[]> filePathCallback, String acceptType, boolean paramBoolean) {
-                //Log.d(TAG, "");
-                if (mFilePathCallbackStr != null) {
-                    mFilePathCallbackStr.onReceiveValue(null);
-                }
-                mFilePathCallbackStr = filePathCallback;
-                showFileChooserPicker();
-            }
-
-
-            public void showFileChooser(ValueCallback<String[]> uploadFileCallback, FileChooserParams fileChooserParams) {
-                //Log.d(TAG, "");
-                if (mFilePathCallbackStr != null) {
-                    mFilePathCallbackStr.onReceiveValue(null);
-                }
-                mFilePathCallbackStr = uploadFileCallback;
-                showFileChooserPicker();
-            }
-
-
-            @Override
-            public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
-                if (mFilePathCallback != null) {
-                    mFilePathCallback.onReceiveValue(null);
-                }
-                mFilePathCallback = filePathCallback;
-                showFileChooserPicker();
-                return true;
-            }
         });
 
 
@@ -306,62 +202,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-    private static final int FILE_SELECT_CODE = 0;
-
-    private void showFileChooserPicker() {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("*/*");
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-
-        try {
-            startActivityForResult(
-                    Intent.createChooser(intent, "Select a File to Upload"),
-                    FILE_SELECT_CODE);
-        } catch (android.content.ActivityNotFoundException ex) {
-            // Potentially direct the user to the Market with a Dialog
-            Toast.makeText(this, "Please install a File Manager.",
-                    Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case FILE_SELECT_CODE:
-                if (resultCode == RESULT_OK) {
-
-                    Uri uri = data.getData();
-
-                    Log.d(TAG, "File Uri: " + uri.toString());
-
-                    if (mFilePathCallback != null) {
-                        Uri[] results = new Uri[]{uri};
-                        mFilePathCallback.onReceiveValue(results);
-                        mFilePathCallback = null;
-                    }
-
-                    if (mUploadFile != null) {
-                        mUploadFile.onReceiveValue(uri);
-                        mUploadFile = null;
-                    }
-
-                    if (mFilePathCallbackStr != null) {
-                        String[] values = {uri.getPath()};
-                        mFilePathCallbackStr.onReceiveValue(values);
-                        mFilePathCallbackStr = null;
-                    }
-                }
-                break;
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-
-
-    private boolean checkPermission(String permission) {
-        return ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED;
-    }
 
 
 }

@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">FairJournal</string>
+    <string name="full_name">the Fair Journal</string>
     <string name="url">https://thefairjournal.com/</string>
+    <string name="about_us">About us</string>
+    <string name="about">The Fair Journal is run by active scientists passionate about spreading recent scientific findings in an understandable and truthful manner to kids and non-scholarly educated adults. Our specialty is making cartoons explaining the essence of research articles to kids, with a focus on storytelling and making it fun. Additionally, we publish a written summary that has more details and explanations and is written in a language that non-scholarly educated people can understand. We also pay scientists what is fair, and offer 55% of the commercial revenue to the scientists when they submit a layman summary of their article. The Fair Journal is multidisciplinary, and we accept layman summaries in all fields of science including engineering, social sciences, and health sciences.</string>
+
+
 
 </resources>

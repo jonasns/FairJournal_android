@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="About us"
+            android:text="@string/about_us"
             android:textSize="18sp"
             android:layout_centerInParent="true"
             android:textColor="#FFF"
@@ -38,7 +38,7 @@
                 android:id="@+id/heading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="the Fair Journal"
+                android:text="@string/full_name"
                 android:layout_centerHorizontal="true"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -64,22 +64,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:textAlignment="center"
-                android:text="The Fair Journal is run by active scientists passionate about spreading recent scientific findings in an understandable and truthful manner to kids and non-scholarly educated adults. Our specialty is making cartoons explaining the essence of research articles to kids, with a focus on storytelling and making it fun. Additionally, we publish a written summary that has more details and explanations and is written in a language that non-scholarly educated people can understand. We also pay scientists what is fair, and offer 55% of the commercial revenue to the scientists when they submit a layman summary of their article. The Fair Journal is multidisciplinary, and we accept layman summaries in all fields of science including engineering, social sciences, and health sciences."
+                android:text="@string/about"
                 android:textSize="17sp"/>
-
-
-
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/icon"
-                android:visibility="gone"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:layout_below="@+id/detail"/>
 
 
 
