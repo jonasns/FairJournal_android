@@ -46,7 +46,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.onesignal:OneSignal:[3.11.2, 3.99.99]'
     implementation 'com.google.android.gms:play-services-ads:17.1.2'
-    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
-
 
 }
