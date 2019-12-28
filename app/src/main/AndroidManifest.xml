@@ -30,10 +30,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.app.thefairjournal.MainActivity" />
-        <activity android:name="com.app.thefairjournal.Error" />
-        <activity android:name="com.app.thefairjournal.About" />
-        <activity android:name="com.app.thefairjournal.Contact" />
+        <activity android:name="com.app.thefairjournal.MainActivity" android:configChanges="orientation|screenSize" />
+        <activity android:name="com.app.thefairjournal.Error" android:configChanges="orientation|screenSize" />
+        <activity android:name="com.app.thefairjournal.About" android:configChanges="orientation|screenSize" />
+        <activity android:name="com.app.thefairjournal.Contact" android:configChanges="orientation|screenSize"/>
     </application>
 
 </manifest>

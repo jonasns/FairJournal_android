@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.stss.fairjournal"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    package="com.app.thefairjournal"
+    android:versionCode="2"
+    android:versionName="1.01" >
 
     <uses-sdk
         android:minSdkVersion="21"
@@ -16,10 +16,10 @@
 
     <!-- Create a unique permission for your app and use it so only your app can receive your OneSignal messages. -->
     <permission
-        android:name="com.stss.fairjournal.permission.C2D_MESSAGE"
+        android:name="com.app.thefairjournal.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.stss.fairjournal.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.app.thefairjournal.permission.C2D_MESSAGE" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <!--
  Required so the device vibrates on receiving a push notification.
@@ -72,10 +72,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.app.thefairjournal.MainActivity" />
-        <activity android:name="com.app.thefairjournal.Error" />
-        <activity android:name="com.app.thefairjournal.About" />
-        <activity android:name="com.app.thefairjournal.Contact" />
+        <activity
+            android:name="com.app.thefairjournal.MainActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name="com.app.thefairjournal.Error"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name="com.app.thefairjournal.About"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name="com.app.thefairjournal.Contact"
+            android:configChanges="orientation|screenSize" />
 
         <meta-data
             android:name="onesignal_app_id"
@@ -92,7 +100,7 @@
             <intent-filter android:priority="999" >
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
 
-                <category android:name="com.stss.fairjournal" />
+                <category android:name="com.app.thefairjournal" />
             </intent-filter>
         </receiver>
         <receiver android:name="com.onesignal.NotificationOpenedReceiver" />
@@ -150,7 +158,7 @@
 
         <provider
             android:name="com.google.android.gms.ads.MobileAdsInitProvider"
-            android:authorities="com.stss.fairjournal.mobileadsinitprovider"
+            android:authorities="com.app.thefairjournal.mobileadsinitprovider"
             android:exported="false"
             android:initOrder="100" />
 
@@ -184,7 +192,7 @@
 
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
-            android:authorities="com.stss.fairjournal.firebaseinitprovider"
+            android:authorities="com.app.thefairjournal.firebaseinitprovider"
             android:exported="false"
             android:initOrder="100" />
 
